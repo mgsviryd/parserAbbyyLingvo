@@ -7,6 +7,7 @@ import org.dom4j.io.SAXReader;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,42 +36,51 @@ public class ParserAbbyyTutor {
             if (word == EMPTY) {
                 continue;
             }
-            String meaning = getMeaning(card);
-            String example = getExample(card);
-            if (example == EMPTY){
-                cards.add(new Card(word, meaning, EMPTY,EMPTY));
+            List<Meaning> meanings = getMeanings(card);
+            if (meanings.isEmpty()){
+                cards.add(new Card (word, EMPTY, EMPTY,EMPTY));
             }else {
-                Pair<String, String> pair = splitter.getPair(example);
-                cards.add(new Card(word, meaning, pair.getKey(),pair.getValue()));
+                for (Meaning m:meanings) {
+                    String example = m.getExample();
+                    String translation = m.getCombineWords();
+                    if (example == null || example == EMPTY){
+                        cards.add(new Card(word, translation, EMPTY,EMPTY));
+                    }else {
+                        Pair<String, String> pair = splitter.getPair(example);
+                        cards.add(new Card(word, translation, pair.getKey(),pair.getValue()));
+                    }
+                }
             }
         }
         return cards;
     }
 
-    private String getExample(Element card) {
-        try {
-            return card
-                    .element(MEANINGS)
-                    .element(MEANING)
-                    .element(EXAMPLES)
-                    .element(EXAMPLE)
-                    .getStringValue();
+    private List<Meaning> getMeanings(Element card) {
+        List<Meaning> meanings = Collections.emptyList();
+        try{
+            List<Element> elements = card.element(MEANINGS).elements(MEANING);
+            meanings = new ArrayList<>();
+            for (Element e: elements) {
+                List<Element> elementWords = e.element(TRANSLATIONS).elements(WORD);
+                List<String> words = new ArrayList<>();
+                if (!elementWords.isEmpty()){
+                    for (Element element:elementWords) {
+                        words.add(element.getStringValue());
+                    }
+                }
+                String example = null;
+                Element elementExample = e.element(EXAMPLES).element(EXAMPLE);
+                if (elementExample !=null){
+                    example = elementExample.getStringValue();
+                }
+                Meaning meaning = new Meaning();
+                meaning.setCombineWords(words);
+                meaning.setExample(example);
+                meanings.add(meaning);
+            }
         } catch (Exception e) {
-            return EMPTY;
         }
-    }
-
-    private String getMeaning(Element card) {
-        try {
-            return card
-                    .element(MEANINGS)
-                    .element(MEANING)
-                    .element(TRANSLATIONS)
-                    .element(WORD)
-                    .getStringValue();
-        } catch (Exception e) {
-            return EMPTY;
-        }
+        return meanings;
     }
 
     private String getWord(Element card) {
