@@ -14,7 +14,7 @@ public class SplitterSlashToPairsStringTest {
     @Before
     public void init() {
         splitterSlashToPairsString = new SplitterSlashToPairsString();
-        text = text = "word -- слово";
+        text = "word -- слово";
         first = "word";
         last = "слово";
     }

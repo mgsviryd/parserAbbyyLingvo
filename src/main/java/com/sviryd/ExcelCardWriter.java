@@ -20,7 +20,7 @@ public class ExcelCardWriter {
             workbook = new XSSFWorkbook(fip);
         }catch (Exception e){
             fip.close();
-            workbook = new XSSFWorkbook(file);
+            workbook = new XSSFWorkbook();
         }
         int sheetIndex = workbook.getSheetIndex(sheetName);
         if (sheetIndex != -1){
