@@ -16,4 +16,5 @@ public class Card implements Serializable {
     private String word;
     private String translation;
     private String example;
+    private String exampleTranslation;
 }

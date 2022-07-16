@@ -9,4 +9,5 @@ public class ExcelSheetDimension {
     private int widthWord;
     private int widthTranslation;
     private int widthExample;
+    private int widthExampleTranslation;
 }
