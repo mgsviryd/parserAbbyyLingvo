@@ -1,5 +1,6 @@
 ### TARGET ###
 */target/
+*/classes
 
 ### IntelliJ IDEA ###
 .idea
@@ -9,4 +10,6 @@
 
 ### Doc ###
 temporary
+target
+classes
 
