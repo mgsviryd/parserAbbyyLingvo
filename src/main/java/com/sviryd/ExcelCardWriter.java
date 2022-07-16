@@ -29,8 +29,9 @@ public class ExcelCardWriter {
         Sheet sheet = workbook.createSheet(sheetName);
         sheet.setColumnWidth(0, excelSheetDimension.getWidthWord());
         sheet.setColumnWidth(1, excelSheetDimension.getWidthTranslation());
-        sheet.setColumnWidth(2, excelSheetDimension.getWidthExample());
-        sheet.setColumnWidth(3, excelSheetDimension.getWidthExampleTranslation());
+        sheet.setColumnWidth(2, excelSheetDimension.getWidthWord());
+        sheet.setColumnWidth(3, excelSheetDimension.getWidthExample());
+        sheet.setColumnWidth(4, excelSheetDimension.getWidthExampleTranslation());
         CellStyle style = workbook.createCellStyle();
         style.setWrapText(true);
 
@@ -43,9 +44,11 @@ public class ExcelCardWriter {
             cell.setCellValue(cards.get(i).getTranslation());
             cell.setCellStyle(style);
             cell = row.createCell(2);
-            cell.setCellValue(cards.get(i).getExample());
             cell.setCellStyle(style);
             cell = row.createCell(3);
+            cell.setCellValue(cards.get(i).getExample());
+            cell.setCellStyle(style);
+            cell = row.createCell(4);
             cell.setCellValue(cards.get(i).getExampleTranslation());
             cell.setCellStyle(style);
         }
