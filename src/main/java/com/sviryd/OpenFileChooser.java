@@ -92,6 +92,7 @@ public class OpenFileChooser extends Application {
         buttonConvert.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                printLog(textAreaStatus, IN_PROGRESS);
                 if (fileXML == null && fileExcel == null) {
                     printLog(textAreaStatus, SELECT_XML_FILE + "\n" + SELECT_EXCEL_FILE);
                     return;
@@ -119,7 +120,6 @@ public class OpenFileChooser extends Application {
                     return;
                 }
                 try {
-                    printLog(textAreaStatus, IN_PROGRESS);
                     ParserAbbyyTutor parserAbbyyTutor = new ParserAbbyyTutor();
                     ExcelCardWriter excelCardWriter = new ExcelCardWriter(new ExcelSheetDimension(6000, 6000, 12000, 12000));
                     List<Card> cards = parserAbbyyTutor.getCards(fileXML);

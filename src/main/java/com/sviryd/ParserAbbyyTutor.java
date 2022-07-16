@@ -65,11 +65,17 @@ public class ParserAbbyyTutor {
                 List<String> words = new ArrayList<>();
                 if (!elementWords.isEmpty()){
                     for (Element element:elementWords) {
-                        words.add(element.getStringValue());
+                        String stringValue = element.getStringValue();
+                        if (stringValue == null)continue;
+                        words.add(stringValue);
                     }
                 }
                 String example = null;
-                Element elementExample = e.element(EXAMPLES).element(EXAMPLE);
+                Element elementExample = null;
+                try {
+                    elementExample = e.element(EXAMPLES).element(EXAMPLE);
+                } catch (Exception e1) {
+                }
                 if (elementExample !=null){
                     example = elementExample.getStringValue();
                 }
