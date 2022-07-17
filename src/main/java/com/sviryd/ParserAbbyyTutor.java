@@ -20,7 +20,7 @@ public class ParserAbbyyTutor {
     private static final String EXAMPLES = "examples";
     private static final String EXAMPLE = "example";
     private static final String EMPTY = "";
-    private SplitterSlashToPairsString splitter = new SplitterSlashToPairsString();
+    private LatinCyrillicSplitter splitter = new LatinCyrillicSplitter();
 
     public List<Card> getCards(File file) throws Exception {
         if (!file.exists()) {

@@ -12,7 +12,6 @@ import java.io.Serializable;
 @ToString
 public class Card implements Serializable {
     private static final long serialVersionUID = 1L;
-    public static final int COUNT = 3;
     private String word;
     private String translation;
     private String example;
