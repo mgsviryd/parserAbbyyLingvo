@@ -33,6 +33,6 @@ public class Card implements Serializable, Cloneable {
     }
 
     public String getExampleAndTranslation() {
-        return example + " — " + exampleTranslation;
+        return example + " - " + exampleTranslation;
     }
 }
