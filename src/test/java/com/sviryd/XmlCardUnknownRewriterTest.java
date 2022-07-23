@@ -27,7 +27,7 @@ public class XmlCardUnknownRewriterTest {
         for (File file: new File("./src/main/resources/TutorDict").listFiles()) {
             filesXml.add(file);
         }
-        fileExcel = new File("./src/main/resources/vocabulary.xlsx");
+        fileExcel = new File("./src/main/resources/unknown.xlsx");
         fileXml = new File("./src/main/resources/unknown.xml");
         checker = new FileExtensionChecker();
         keeper = new UnknownCardPathKeeper(checker,

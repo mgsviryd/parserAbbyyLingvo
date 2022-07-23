@@ -23,8 +23,8 @@ public class XmlCardUnknownRewriter {
         for (Card u: unknown) {
             all.stream().filter(x -> Card.compareByWordTranslation.test(x,u)).findFirst().ifPresent(i->{
                 Card clone = i.clone();
-                i.setExample(u.getExample());
-                i.setExampleTranslation(u.getExampleTranslation());
+                clone.setExample(u.getExample());
+                clone.setExampleTranslation(u.getExampleTranslation());
                 new CardXmlChanger().adjustExampleTranslationToXml(clone);
                 selected.add(clone);
             });
