@@ -1,5 +1,6 @@
 package com.sviryd;
 
+import com.sviryd.util.LatinCyrillicSplitter;
 import javafx.util.Pair;
 import org.junit.Assert;
 import org.junit.Before;

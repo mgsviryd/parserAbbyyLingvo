@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
-Main-Class: com.sviryd.OpenFileChooser
+Main-Class: com.sviryd.application.ExcelToXmlUnknownWordsDictionaryBui
+ lderApplication
 
